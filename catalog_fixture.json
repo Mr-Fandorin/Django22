@@ -1,0 +1,70 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "category_name": "Телевизоры",
+        "description": "Различные телевизоры"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+        "category_name": "Телефоны",
+        "description": "Мобильные телефоны"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "product_name": "Samsung Galaxy S25",
+        "description": "Топовая модель S-серии",
+        "image": "",
+        "category_name": 4,
+        "product_cost": "50000.00",
+        "created_at": "2026-03-18",
+        "updated_at": "2026-03-18"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "product_name": "Iphone 16 Pro",
+        "description": "Топовая модель 16-серии",
+        "image": "",
+        "category_name": 4,
+        "product_cost": "100000.00",
+        "created_at": "2026-03-18",
+        "updated_at": "2026-03-18"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "product_name": "Philips 55PUS8149/60",
+        "description": "Качественный телевизор",
+        "image": "",
+        "category_name": 3,
+        "product_cost": "80000.00",
+        "created_at": "2026-03-18",
+        "updated_at": "2026-03-18"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "product_name": "Samsung QE55S90CAUXRU",
+        "description": "Современный OLED-телевизор премиум-класса",
+        "image": "",
+        "category_name": 3,
+        "product_cost": "110000.00",
+        "created_at": "2026-03-18",
+        "updated_at": "2026-03-18"
+    }
+}
+]
