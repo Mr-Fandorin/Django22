@@ -63,11 +63,11 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 (
-                    "image",
+                    "photo",
                     models.ImageField(
                         blank=True,
                         null=True,
-                        upload_to="image/",
+                        upload_to="photo/",
                         verbose_name="Изображение",
                     ),
                 ),
