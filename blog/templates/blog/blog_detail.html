@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% load blog_tags %}
+{% block content %}
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div
+      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+    >
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-success-emphasis"
+          >Design</strong
+        >
+        <h3 class="mb-0">{{ blog.title }}</h3>
+        <div class="mb-1 text-body-secondary">{{ blog.created_at }}</div>
+        <p class="mb-auto">
+          {{ blog.description }}
+        </p>
+        <div class="btn-group" role="group" aria-label="button group">
+          <a class="btn btn-outline-primary" href="{% url 'blog:blog_list' %}" role="button">Назад</a>
+          <a class="btn btn-outline-primary" href="{% url 'blog:blog_update' blog.pk %}" role="button">Редактировать</a>
+          <a class="btn btn-outline-primary" href="{% url 'blog:blog_confirm_delete' blog.pk %}" role="button">Удалить</a>
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img class="bd-placeholder-img" height="250" width="200" src="{{ blog.image | media_filter }}">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
