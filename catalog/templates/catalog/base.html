@@ -190,7 +190,7 @@
       </ul>
     </div>
     <header data-bs-theme="dark">
-    {% include 'includes/inc_menu.html' %}
+    {% include 'catalog/includes/inc_menu.html' %}
 
     </header>
     <main>
@@ -203,6 +203,7 @@
             </p>
             <p>
               <a href="#" class="btn btn-primary my-2">Main call to action</a>
+              <a class="btn btn-primary" href="{% url 'catalog:product_create' %}" role="button">Добавить продукт</a>
               <a href="#" class="btn btn-secondary my-2">Secondary action</a>
             </p>
           </div>
