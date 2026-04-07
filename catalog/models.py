@@ -21,7 +21,7 @@ class Product(models.Model):
     description = models.TextField(
         null=True, blank=True, verbose_name="Описание продукта"
     )
-    image = models.ImageField(
+    photo = models.ImageField(
         upload_to="product/photo", null=True, blank=True, verbose_name="Изображение"
     )
     category_name = models.ForeignKey(
@@ -35,6 +35,13 @@ class Product(models.Model):
     product_cost = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    views_counter = models.PositiveIntegerField(
+        verbose_name = "Счетчик просмотров",
+        help_text = "Укажите количество просмотров",
+        db_default=0,
+    )
+
 
     def __str__(self):
         return self.product_name

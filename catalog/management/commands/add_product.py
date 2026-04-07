@@ -3,7 +3,7 @@ from catalog.models import Category, Product
 
 
 class Command(BaseCommand):
-    help = "Add test products to the database"
+    help = "Add test catalog to the database"
 
     def handle(self, *args, **kwargs):
         Product.objects.all().delete()
