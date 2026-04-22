@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             model_name="product",
             name="view_counter",
             field=models.PositiveIntegerField(
-                db_default=0,
+                default=0,
                 help_text="Укажите количество просмотров",
                 verbose_name="Счетчик просмотров",
             ),
