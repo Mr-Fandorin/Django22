@@ -1,5 +1,3 @@
-
-
 <div class="collapse text-bg-dark" id="navbarHeader">
   <div class="container">
     <div class="row">
@@ -17,9 +15,8 @@
           <li><a href="{% url 'users:logout' %}" class="text-white">Выход</a></li>
           {% else %}
           <li><a href="{% url 'users:login' %}" class="text-white">Вход</a></li>
+          <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
           {% endif %}
-<!--          <li><a href="#" class="text-white">Вход в личный кабинет</a></li>-->
-<!--          <li><a href="#" class="text-white">Регистрация</a></li>-->
         </ul>
       </div>
     </div>
