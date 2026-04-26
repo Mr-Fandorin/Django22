@@ -203,7 +203,9 @@
             </p>
             <p>
               <a href="#" class="btn btn-primary my-2">Main call to action</a>
+              {% if user.is_authenticated %}
               <a class="btn btn-primary" href="{% url 'catalog:product_create' %}" role="button">Добавить продукт</a>
+              {% endif %}
               <a href="#" class="btn btn-secondary my-2">Secondary action</a>
             </p>
           </div>
