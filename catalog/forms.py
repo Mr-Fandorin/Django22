@@ -1,4 +1,6 @@
 from django import forms
+from django.db.models import BooleanField
+
 from .models import Product
 
 FORBIDDEN_WORDS = [
@@ -6,8 +8,17 @@ FORBIDDEN_WORDS = [
     'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
 ]
 
+class StyleFormMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for fild_name, fild in self.fields.items():
+            if isinstance(fild, BooleanField):
+                fild.widget.attrs['class'] = "form-check-input"
+            else:
+                fild.widget.attrs['class'] = "form-control"
 
-class ProductForm(forms.ModelForm):
+
+class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
         exclude = ('views_counter',)
