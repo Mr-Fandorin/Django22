@@ -20,12 +20,7 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
         self.object.views_counter += 1
         self.object.save()
         return self.object
-        # self.object = super().get_object(queryset)
-        # if self.request.user == self.object.owner:
-        #     self.object.views_counter += 1
-        #     self.object.save()
-        #     return self.object
-        # raise PermissionDenied
+
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -53,9 +48,9 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     def get_form_class(self):
         user = self.request.user
         if user == self.object.owner:
-            return ProductForm
-        if user.has_perm("catalog.can_delete_product"):
-            return ProductForm
+            return ProductModeratorForm
+        if user.has_perm("can_unpublish_product"):
+            return ProductModeratorForm
         raise PermissionDenied
 
 
@@ -66,26 +61,14 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'catalog/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
 
-    def get_form_class(self):
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
         user = self.request.user
-        if user == self.object.owner:
-            return ProductForm
-        if user.has_perm("catalog.can_delete_product"):
-            return ProductModeratorForm
-        raise PermissionDenied
+        if user != obj.owner and not user.has_perm("catalog.can_delete_product"):
+            raise PermissionDenied("У вас нет прав для удаления этого продукта.")
+        return obj
 
-# class ProductUnpublishView(PermissionRequiredMixin, UpdateView):
-#     model = Product
-#     fields = ['status']
-#     permission_required = 'catalog.can_unpublish_product'
-#     template_name = 'catalog/product_unpublish.html'
-#     success_url = reverse_lazy('catalog:product_list')
-#
-#     def form_valid(self, form):
-#         product = form.save(commit=False)
-#         product.status = 'unpublished'
-#         product.save()
-#         return super().form_valid(form)
+
 
 class ProductUnpublishView(PermissionRequiredMixin, UpdateView):
     model = Product
