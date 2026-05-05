@@ -21,7 +21,7 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ('views_counter',)
+        exclude = ('views_counter', 'owner')
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -72,5 +72,11 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             )
 
         return product_cost
+
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        # fields = ('views_counter', 'owner')
 
 
